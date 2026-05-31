@@ -1,0 +1,10 @@
+; DOES NOT WORK ON MULTIPLE OPERATIONS WHEN HAVING MORE THAN ONE APPLIANCES
+; PROBLEM: 
+    ; SHARED RESOURCE?
+    ; Struggling to find a way to connect the appliance to its beverage that works!
+;   
+; SOLUTIONS TRIED that didnt work:
+  ; Goal-volume variable
+  ; Refill action
+  ; Splitting preparing tea and preparing coffee into two different actions
+  ; (make ?a ?b) condition 
