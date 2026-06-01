@@ -1,4 +1,4 @@
-(define (problem sufficient-capacity-tea-coffee-plus) (:domain beverage-timed)
+(define (problem insufficient-capacity-tea-coffee-plus) (:domain beverage-timed)
   (:objects 
     kettle1 - kettle 
     tea1 - tea
@@ -18,8 +18,8 @@
     (make coffee-maker1 coffee1)
   )
   (:goal (and
-      (>= (prepared-volume tea1) 300)
-      (>= (prepared-volume coffee1) 300)
+      (>= (prepared-volume tea1) 700)
+      (>= (prepared-volume coffee1) 700)
     )
   )
 )
