@@ -1,4 +1,4 @@
-(define (problem insufficient-capacity-tea) (:domain beverage-simple)
+(define (problem insufficient-capacity-discrete) (:domain beverage-discrete)
   (:objects 
     kettle1 - kettle 
     tea1 - tea
@@ -6,21 +6,18 @@
     coffee1 - coffee
   )
   (:init
-    (= (max-volume kettle1) 500)
-    (= (current-volume kettle1) 0)
-    (= (beverage-volume tea1) 0)
-    (= (max-volume coffee-maker1) 500)
-    (= (current-volume coffee-maker1) 0)
-    (= (beverage-volume coffee1) 0)
+    (= (max-portions kettle1) 5)
+    (= (current-portions kettle1) 0)
+    (= (beverage-portions tea1) 0)
+    (= (max-portions coffee-maker1) 5)
+    (= (current-portions coffee-maker1) 0)
+    (= (beverage-portions coffee1) 0)
     (make kettle1 tea1)
     (make coffee-maker1 coffee1)
-
   )
   (:goal (and
-      (>= (beverage-volume tea1) 700)
-      (>= (beverage-volume coffee1) 700)
+      (>= (beverage-portions tea1) 7)
+      (>= (beverage-portions coffee1) 7)
     )
   )
 )
-
-; It overshoots

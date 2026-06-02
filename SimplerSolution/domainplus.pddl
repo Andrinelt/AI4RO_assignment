@@ -12,7 +12,7 @@
     (heated ?a - appliance)
     (make ?a - appliance ?b - beverage)
     (tap-in-use)
-    (filled ?a)
+    (filled ?a - appliance)
   )
 
   (:functions
@@ -54,22 +54,24 @@
       (not (tap-on ?a)) 
       (not (tap-in-use)) 
       (filled ?a)
+      (assign (current-volume ?a) (max-volume ?a))
     )
   )
 
   (:action heat
       :parameters (?a - appliance)
-      :precondition (and (not (heated ?a)) (filled ?a))
+      :precondition (and 
+        (not (heated ?a)) 
+        (filled ?a) 
+      )
       :effect (and 
         (heated ?a)
       )
   )
-  
 
   (:action prepare
     :parameters (?a - appliance ?b - beverage)
     :precondition (and
-      ;(not (tap-on ?a))
       (heated ?a)
       (filled ?a)
       (make ?a ?b)
@@ -82,7 +84,3 @@
     )
   )
 )
-
-
-; Spør claude om hv jeg skal gjøre med dette kravet
-; Introduce an event representing overflow or capacity violation.

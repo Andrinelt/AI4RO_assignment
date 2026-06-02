@@ -1,4 +1,4 @@
-(define (domain beverage-simple)
+(define (domain beverage-discrete)
   (:requirements :strips :typing :numeric-fluents )
 
   (:types 
@@ -8,46 +8,55 @@
   )
 
   (:predicates
-    (filled ?a - appliance)
     (heated ?a - appliance)
     (make ?a - appliance ?b - beverage)
   )
 
   (:functions
-    (current-volume ?a - appliance)
-    (max-volume ?a - appliance)
-    (beverage-volume ?b - beverage)
+    (current-portions ?a - appliance)
+    (max-portions ?a - appliance)
+    (beverage-portions ?b - beverage)
   )
 
-  (:action fill
+  (:action fill-portion
     :parameters (?a - appliance)
     :precondition (and
-      (not (filled ?a))
       (not (heated ?a))
+      (< (current-portions ?a) (max-portions ?a))
     )
     :effect (and
-      (filled ?a)
-      (assign (current-volume ?a) (max-volume ?a))
+      (increase (current-portions ?a) 1)
     )
   )
 
   (:action heat
     :parameters (?a - appliance)
     :precondition (and
-      (filled ?a)
       (not (heated ?a))
     )
     :effect (and (heated ?a))
   )
 
-  (:action prepare-serving
+  (:action prepare-serving-portion
       :parameters (?a - appliance ?b - beverage)
-      :precondition (and (filled ?a) (heated ?a) (make ?a ?b))
+      :precondition (and (heated ?a) (make ?a ?b) (> (current-portions ?a) 0))
       :effect (and 
-        (increase (beverage-volume ?b) (current-volume ?a))
-        (assign (current-volume ?a) 0)
-        (not (filled ?a))
-        (not (heated ?a))
+        (increase (beverage-portions ?b) 1)
+        (decrease (current-portions ?a) 1)
       )
   )
+
+  (:action refill-portion
+      :parameters (?a - appliance ?b - beverage)
+      :precondition (and 
+        (heated ?a)
+        (make ?a ?b)
+        (< (current-portions ?a) 1)
+      )
+      :effect (and 
+        (not (heated ?a))
+        (increase (current-portions ?a) 1)
+      )
+  )
+  
 )

@@ -12,7 +12,6 @@
   )
   (:goal (and
       (>= (prepared-volume tea1) 300)
-      
     )
   )
 )
