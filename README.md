@@ -2,7 +2,7 @@ AI4RO_assignment
 # Assignment D2-V6: Domestic Service Robot – Appliance Capacity Constraints
 
 ### Scenario
-A robot prepares beverages using kitchen appliances such as a kettle and a coffee machine. These appliances have limited capacity (maximum volume of water that can be heated or processed at once).
+A robot prepares beverages using kitchen appliances such as a kettle and a coffee machine. These appliances have limited capacity (maximum volume or portions of water that can be heated or processed at once).
 The robot manage resources efficiently, ensuring that capacity constraints are respected while completing preparation tasks.
 
 ### Domain Characteristics
