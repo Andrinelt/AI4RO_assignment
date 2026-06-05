@@ -14,7 +14,7 @@ The robot manage resources efficiently, ensuring that capacity constraints are r
 ## Modelling
 The task of preparing coffee and tea beverages is devided into the action of filling appliance with water, heating the appliance and then lastly prepare the beverage. The capacity constraints prevent the appliances from being treated as unlimited resources.
 
-### 1 Basic PDDL Model (Discrete Capacity)
+### Q1 Basic PDDL Model
 With the basic PDDL model, appliance capacity is modelled as a maximum number of discrete portions. The action of fill-portion, only fills one portion at a time, but it has to fill the appliance full before it can heat and prepare. This modelling choice is not optimal because the robot ends up making more than what is demanded. The appliance has to be heated before it can prepare the beverage portions, and the appliances cannot be filled with water again until it has prepared all portions of beverages. In order to do this, the action refill is implemented. 
 - Problem 1a is where capacity is sufficient, meaning the beverage goal portions is less than the maximum capacity for each appliance.
 - Problem 1b is where capacity constraints require multiple operations, meaning the robot needs to refill the appliances in order to reach the goal volume.
@@ -36,7 +36,7 @@ With the basic PDDL model, appliance capacity is modelled as a maximum number of
 </table>
 
 
-### 2 PDDL+ Model (Continous Capacity)
+### Q2 PDDL+ Model
 In the PDDL+ model, the appliance capacity is modelled as continous volume represented as milliliters. 
 The domain is kept simple where only the action of filling water is modelled as a process with an overflow-event. By adding this event, the robot is forced to fill the appliance until it is full, before it can put it on heat. Like in the discrete case, this modelling choise may not be optimal. An improvement of this could possibly be to implement a stop-filling action the robot could execute before the overflow-event happens.
 
